@@ -1,0 +1,12 @@
+.DS_Store
+*.swp
+
+*.mode1v3
+*.mode2v3
+*.move1v3
+*.pbxuser
+*.perspective
+*.perspectivev3
+build/
+Jenky.xcodeproj/xcuserdata/
+Jenky.xcodeproj/project.xcworkspace

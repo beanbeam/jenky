@@ -1,0 +1,418 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		6B0491611A97D0E200E807DF /* JobView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B0491601A97D0E200E807DF /* JobView.swift */; };
+		6B5C08DA1A8E77B000A79F08 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B5C08D91A8E77B000A79F08 /* AppDelegate.swift */; };
+		6B5C08DC1A8E77B000A79F08 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B5C08DB1A8E77B000A79F08 /* ViewController.swift */; };
+		6B5C08DE1A8E77B000A79F08 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6B5C08DD1A8E77B000A79F08 /* Images.xcassets */; };
+		6B5C08E11A8E77B000A79F08 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6B5C08DF1A8E77B000A79F08 /* Main.storyboard */; };
+		6B5C08ED1A8E77B000A79F08 /* JenkyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B5C08EC1A8E77B000A79F08 /* JenkyTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		6B5C08E71A8E77B000A79F08 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6B5C08CC1A8E77B000A79F08 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6B5C08D31A8E77B000A79F08;
+			remoteInfo = Jenky;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		6B0491601A97D0E200E807DF /* JobView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JobView.swift; sourceTree = "<group>"; };
+		6B5C08D41A8E77B000A79F08 /* Jenky.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Jenky.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		6B5C08D81A8E77B000A79F08 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6B5C08D91A8E77B000A79F08 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		6B5C08DB1A8E77B000A79F08 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		6B5C08DD1A8E77B000A79F08 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		6B5C08E01A8E77B000A79F08 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		6B5C08E61A8E77B000A79F08 /* JenkyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JenkyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		6B5C08EB1A8E77B000A79F08 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6B5C08EC1A8E77B000A79F08 /* JenkyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JenkyTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		6B5C08D11A8E77B000A79F08 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6B5C08E31A8E77B000A79F08 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		6B5C08CB1A8E77B000A79F08 = {
+			isa = PBXGroup;
+			children = (
+				6B5C08D61A8E77B000A79F08 /* Jenky */,
+				6B5C08E91A8E77B000A79F08 /* JenkyTests */,
+				6B5C08D51A8E77B000A79F08 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		6B5C08D51A8E77B000A79F08 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				6B5C08D41A8E77B000A79F08 /* Jenky.app */,
+				6B5C08E61A8E77B000A79F08 /* JenkyTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		6B5C08D61A8E77B000A79F08 /* Jenky */ = {
+			isa = PBXGroup;
+			children = (
+				6B5C08D91A8E77B000A79F08 /* AppDelegate.swift */,
+				6B5C08DB1A8E77B000A79F08 /* ViewController.swift */,
+				6B5C08DD1A8E77B000A79F08 /* Images.xcassets */,
+				6B5C08DF1A8E77B000A79F08 /* Main.storyboard */,
+				6B5C08D71A8E77B000A79F08 /* Supporting Files */,
+				6B0491601A97D0E200E807DF /* JobView.swift */,
+			);
+			path = Jenky;
+			sourceTree = "<group>";
+		};
+		6B5C08D71A8E77B000A79F08 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				6B5C08D81A8E77B000A79F08 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		6B5C08E91A8E77B000A79F08 /* JenkyTests */ = {
+			isa = PBXGroup;
+			children = (
+				6B5C08EC1A8E77B000A79F08 /* JenkyTests.swift */,
+				6B5C08EA1A8E77B000A79F08 /* Supporting Files */,
+			);
+			path = JenkyTests;
+			sourceTree = "<group>";
+		};
+		6B5C08EA1A8E77B000A79F08 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				6B5C08EB1A8E77B000A79F08 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		6B5C08D31A8E77B000A79F08 /* Jenky */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6B5C08F01A8E77B000A79F08 /* Build configuration list for PBXNativeTarget "Jenky" */;
+			buildPhases = (
+				6B5C08D01A8E77B000A79F08 /* Sources */,
+				6B5C08D11A8E77B000A79F08 /* Frameworks */,
+				6B5C08D21A8E77B000A79F08 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Jenky;
+			productName = Jenky;
+			productReference = 6B5C08D41A8E77B000A79F08 /* Jenky.app */;
+			productType = "com.apple.product-type.application";
+		};
+		6B5C08E51A8E77B000A79F08 /* JenkyTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6B5C08F31A8E77B000A79F08 /* Build configuration list for PBXNativeTarget "JenkyTests" */;
+			buildPhases = (
+				6B5C08E21A8E77B000A79F08 /* Sources */,
+				6B5C08E31A8E77B000A79F08 /* Frameworks */,
+				6B5C08E41A8E77B000A79F08 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				6B5C08E81A8E77B000A79F08 /* PBXTargetDependency */,
+			);
+			name = JenkyTests;
+			productName = JenkyTests;
+			productReference = 6B5C08E61A8E77B000A79F08 /* JenkyTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		6B5C08CC1A8E77B000A79F08 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0610;
+				ORGANIZATIONNAME = "Colin Clark";
+				TargetAttributes = {
+					6B5C08D31A8E77B000A79F08 = {
+						CreatedOnToolsVersion = 6.1.1;
+					};
+					6B5C08E51A8E77B000A79F08 = {
+						CreatedOnToolsVersion = 6.1.1;
+						TestTargetID = 6B5C08D31A8E77B000A79F08;
+					};
+				};
+			};
+			buildConfigurationList = 6B5C08CF1A8E77B000A79F08 /* Build configuration list for PBXProject "Jenky" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 6B5C08CB1A8E77B000A79F08;
+			productRefGroup = 6B5C08D51A8E77B000A79F08 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				6B5C08D31A8E77B000A79F08 /* Jenky */,
+				6B5C08E51A8E77B000A79F08 /* JenkyTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		6B5C08D21A8E77B000A79F08 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6B5C08DE1A8E77B000A79F08 /* Images.xcassets in Resources */,
+				6B5C08E11A8E77B000A79F08 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6B5C08E41A8E77B000A79F08 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		6B5C08D01A8E77B000A79F08 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6B0491611A97D0E200E807DF /* JobView.swift in Sources */,
+				6B5C08DC1A8E77B000A79F08 /* ViewController.swift in Sources */,
+				6B5C08DA1A8E77B000A79F08 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6B5C08E21A8E77B000A79F08 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6B5C08ED1A8E77B000A79F08 /* JenkyTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		6B5C08E81A8E77B000A79F08 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6B5C08D31A8E77B000A79F08 /* Jenky */;
+			targetProxy = 6B5C08E71A8E77B000A79F08 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		6B5C08DF1A8E77B000A79F08 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6B5C08E01A8E77B000A79F08 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		6B5C08EE1A8E77B000A79F08 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		6B5C08EF1A8E77B000A79F08 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		6B5C08F11A8E77B000A79F08 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = Jenky/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		6B5C08F21A8E77B000A79F08 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = Jenky/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		6B5C08F41A8E77B000A79F08 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = JenkyTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Jenky.app/Contents/MacOS/Jenky";
+			};
+			name = Debug;
+		};
+		6B5C08F51A8E77B000A79F08 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = JenkyTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Jenky.app/Contents/MacOS/Jenky";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		6B5C08CF1A8E77B000A79F08 /* Build configuration list for PBXProject "Jenky" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6B5C08EE1A8E77B000A79F08 /* Debug */,
+				6B5C08EF1A8E77B000A79F08 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6B5C08F01A8E77B000A79F08 /* Build configuration list for PBXNativeTarget "Jenky" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6B5C08F11A8E77B000A79F08 /* Debug */,
+				6B5C08F21A8E77B000A79F08 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6B5C08F31A8E77B000A79F08 /* Build configuration list for PBXNativeTarget "JenkyTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6B5C08F41A8E77B000A79F08 /* Debug */,
+				6B5C08F51A8E77B000A79F08 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 6B5C08CC1A8E77B000A79F08 /* Project object */;
+}
