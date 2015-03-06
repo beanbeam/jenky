@@ -650,7 +650,7 @@
         <scene sceneID="R2V-B0-nI4">
             <objects>
                 <windowController id="B8D-0N-5wS" sceneMemberID="viewController">
-                    <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="IQv-IB-iLA">
+                    <window key="window" title="Jenky" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="IQv-IB-iLA">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="196" y="240" width="480" height="270"/>
@@ -687,7 +687,7 @@
                                                     <tableViewGridLines key="gridStyleMask" horizontal="YES"/>
                                                     <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                                     <tableColumns>
-                                                        <tableColumn identifier="" editable="NO" width="450" minWidth="40" maxWidth="1000" id="LdA-KW-qbf">
+                                                        <tableColumn identifier="" editable="NO" width="480" minWidth="40" maxWidth="1000" id="LdA-KW-qbf">
                                                             <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left">
                                                                 <font key="font" metaFont="smallSystem"/>
                                                                 <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -708,8 +708,8 @@
                                                         </tableColumn>
                                                     </tableColumns>
                                                     <connections>
-                                                        <outlet property="dataSource" destination="F4C-Sq-fzL" id="9Ly-GQ-wNW"/>
-                                                        <outlet property="delegate" destination="F4C-Sq-fzL" id="BPn-O9-ndf"/>
+                                                        <outlet property="dataSource" destination="RmL-Y7-6Og" id="eXW-2c-qEa"/>
+                                                        <outlet property="delegate" destination="RmL-Y7-6Og" id="c2V-8c-Q8b"/>
                                                     </connections>
                                                 </tableView>
                                             </subviews>
@@ -742,7 +742,7 @@
                     </view>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
-                <customObject id="F4C-Sq-fzL" customClass="AppDelegate" customModule="Jenky" customModuleProvider="target"/>
+                <customObject id="RmL-Y7-6Og" customClass="JobListDelegate" customModule="Jenky" customModuleProvider="target"/>
             </objects>
             <point key="canvasLocation" x="75" y="657.5"/>
         </scene>

@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		6B0491611A97D0E200E807DF /* JobView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B0491601A97D0E200E807DF /* JobView.swift */; };
+		6B1BA1F91A982AAF00595219 /* JobListDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B1BA1F81A982AAF00595219 /* JobListDelegate.swift */; };
+		6B1BA1FC1A982E0100595219 /* JenkinsJob.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B1BA1FB1A982E0100595219 /* JenkinsJob.swift */; };
 		6B5C08DA1A8E77B000A79F08 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B5C08D91A8E77B000A79F08 /* AppDelegate.swift */; };
 		6B5C08DC1A8E77B000A79F08 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B5C08DB1A8E77B000A79F08 /* ViewController.swift */; };
 		6B5C08DE1A8E77B000A79F08 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6B5C08DD1A8E77B000A79F08 /* Images.xcassets */; };
@@ -27,6 +29,8 @@
 
 /* Begin PBXFileReference section */
 		6B0491601A97D0E200E807DF /* JobView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JobView.swift; sourceTree = "<group>"; };
+		6B1BA1F81A982AAF00595219 /* JobListDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JobListDelegate.swift; sourceTree = "<group>"; };
+		6B1BA1FB1A982E0100595219 /* JenkinsJob.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JenkinsJob.swift; sourceTree = "<group>"; };
 		6B5C08D41A8E77B000A79F08 /* Jenky.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Jenky.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6B5C08D81A8E77B000A79F08 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6B5C08D91A8E77B000A79F08 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -78,11 +82,13 @@
 			isa = PBXGroup;
 			children = (
 				6B5C08D91A8E77B000A79F08 /* AppDelegate.swift */,
+				6B1BA1F81A982AAF00595219 /* JobListDelegate.swift */,
+				6B0491601A97D0E200E807DF /* JobView.swift */,
+				6B5C08DF1A8E77B000A79F08 /* Main.storyboard */,
 				6B5C08DB1A8E77B000A79F08 /* ViewController.swift */,
 				6B5C08DD1A8E77B000A79F08 /* Images.xcassets */,
-				6B5C08DF1A8E77B000A79F08 /* Main.storyboard */,
 				6B5C08D71A8E77B000A79F08 /* Supporting Files */,
-				6B0491601A97D0E200E807DF /* JobView.swift */,
+				6B1BA1FB1A982E0100595219 /* JenkinsJob.swift */,
 			);
 			path = Jenky;
 			sourceTree = "<group>";
@@ -211,8 +217,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6B1BA1FC1A982E0100595219 /* JenkinsJob.swift in Sources */,
 				6B0491611A97D0E200E807DF /* JobView.swift in Sources */,
 				6B5C08DC1A8E77B000A79F08 /* ViewController.swift in Sources */,
+				6B1BA1F91A982AAF00595219 /* JobListDelegate.swift in Sources */,
 				6B5C08DA1A8E77B000A79F08 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

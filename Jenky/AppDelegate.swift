@@ -10,9 +10,7 @@ import Cocoa
 import AppKit
 
 @NSApplicationMain
-class AppDelegate: NSObject, NSApplicationDelegate, NSTableViewDataSource, NSTableViewDelegate {
-
-    var values = ["Foo", "Bar", "Baz"]
+class AppDelegate: NSObject, NSApplicationDelegate {
 
     func applicationDidFinishLaunching(aNotification: NSNotification) {
         // Insert code here to initialize your application
@@ -20,20 +18,6 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSTableViewDataSource, NSTab
 
     func applicationWillTerminate(aNotification: NSNotification) {
         // Insert code here to tear down your application
-    }
-
-    func numberOfRowsInTableView(aTableView: NSTableView!) -> Int {
-        return values.count
-    }
-    
-    func tableView(tableView: NSTableView!, viewForTableColumn tableColumn: NSTableColumn!, row: Int) -> AnyObject! {
-        var cellView: JobView = tableView.makeViewWithIdentifier(tableColumn.identifier, owner: self) as JobView
-        
-        var amount = Float(row)/Float(3)
-        
-        cellView.setProgress(amount)
-        
-        return cellView
     }
 }
 
