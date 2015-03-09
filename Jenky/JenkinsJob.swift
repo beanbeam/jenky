@@ -13,6 +13,7 @@ class JenkinsJob {
     }
     
     func refresh() {
+        println("Loading...")
         let rawData = NSData(contentsOfURL: jobUrl)
         
         fullStatus =  NSJSONSerialization.JSONObjectWithData(

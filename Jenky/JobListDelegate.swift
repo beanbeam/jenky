@@ -21,6 +21,8 @@ class JobListDelegate: NSObject, NSTableViewDelegate, NSTableViewDataSource {
         var cellView: JobView = tableView.makeViewWithIdentifier(
             tableColumn.identifier,
             owner: self) as JobView
+        
+        println("Getting view!")
 
         cellView.setJob(jobs[row])
         return cellView
