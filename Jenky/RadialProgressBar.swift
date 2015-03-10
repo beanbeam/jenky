@@ -11,15 +11,15 @@ import Cocoa
 @IBDesignable
 class RadialProgressBar: NSView {
 
-    @IBInspectable var radius: CGFloat = 25
+    @IBInspectable var outerRadius: CGFloat = 25
     @IBInspectable var width: CGFloat = 10
 
     private let LAYERS = [
-        NSColor(calibratedHue: 0,    saturation: 0,   brightness: 1, alpha: 0.75),
-        NSColor(calibratedHue: 1/6,  saturation: 0.8, brightness: 1, alpha: 0.75),
-        NSColor(calibratedHue: 1/12, saturation: 0.8, brightness: 1, alpha: 0.75),
-        NSColor(calibratedHue: 0,    saturation: 0.8, brightness: 1, alpha: 0.75),
-        NSColor(calibratedHue: 0,    saturation: 1,   brightness: 1, alpha: 0.75)]
+        NSColor(calibratedHue: 0,    saturation: 0,   brightness: 1, alpha: 1),
+        NSColor(calibratedHue: 1/6,  saturation: 0.8, brightness: 1, alpha: 1),
+        NSColor(calibratedHue: 1/12, saturation: 0.8, brightness: 1, alpha: 1),
+        NSColor(calibratedHue: 0,    saturation: 0.8, brightness: 1, alpha: 1),
+        NSColor(calibratedHue: 0,    saturation: 1,   brightness: 1, alpha: 1)]
     
     private var progress: Double = 0
 
@@ -29,11 +29,11 @@ class RadialProgressBar: NSView {
     
     override func drawRect(dirtyRect: NSRect) {
         super.drawRect(dirtyRect)
-        println("Drawing progress bar")
 
         let center = NSPoint(x: self.bounds.width/2, y: self.bounds.height/2)
+        let radius = outerRadius - width/2
         let layer = min(Int(progress), LAYERS.count)
-        
+
         if layer > 0 {
             let basePath = NSBezierPath()
             basePath.appendBezierPathWithArcWithCenter(center,

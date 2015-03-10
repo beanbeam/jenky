@@ -17,6 +17,7 @@ class JobView: NSTableCellView {
 
     @IBOutlet var progressBar: RadialProgressBar!
     @IBOutlet var statusIndicator: JobStatusIndicator!
+    @IBOutlet var nameLabel: NSTextField!
 
     private var myJob: JenkinsJob?
 
@@ -27,8 +28,9 @@ class JobView: NSTableCellView {
         update()
     }
 
-    func setJob(job: JenkinsJob) {
+    func setJob(job: JenkinsJob, name: String) {
         myJob = job
+        nameLabel.stringValue = name
         let renderDelay = min(1.0, max(1/RENDER_FPS_CAP, job.getTime() * ANGLE_PER_FRAME / 360))
         println(NSString(format: "Updating at %.1ffps", 1/renderDelay))
         timer = NSTimer.scheduledTimerWithTimeInterval(renderDelay, target: self, selector: "update", userInfo: nil, repeats: true)
@@ -36,16 +38,12 @@ class JobView: NSTableCellView {
     }
 
     func update() {
+        statusIndicator.setStatus(myJob!.getStatus())
         if (myJob!.isBuilding()) {
-            statusIndicator.hidden = true
-
             progressBar.hidden = false
             progressBar.setProgress(myJob!.estimatedProgress())
         } else {
             progressBar.hidden = true
-
-            statusIndicator.hidden = false
-            statusIndicator.setStatus(myJob!.getStatus())
         }
     }
 }

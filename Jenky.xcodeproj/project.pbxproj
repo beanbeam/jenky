@@ -68,7 +68,6 @@
 			isa = PBXGroup;
 			children = (
 				6B5C08D61A8E77B000A79F08 /* Jenky */,
-				6B5C08E91A8E77B000A79F08 /* JenkyTests */,
 				6B5C08D51A8E77B000A79F08 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -102,6 +101,7 @@
 		6B5C08D71A8E77B000A79F08 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				6B5C08E91A8E77B000A79F08 /* JenkyTests */,
 				6B5C08D81A8E77B000A79F08 /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -114,7 +114,7 @@
 				6B5C08EA1A8E77B000A79F08 /* Supporting Files */,
 			);
 			path = JenkyTests;
-			sourceTree = "<group>";
+			sourceTree = SOURCE_ROOT;
 		};
 		6B5C08EA1A8E77B000A79F08 /* Supporting Files */ = {
 			isa = PBXGroup;

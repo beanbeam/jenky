@@ -31,7 +31,7 @@ class JobListDelegate: NSObject, NSTableViewDelegate, NSTableViewDataSource {
             string: "job/" + jobs[row].1 + "/",
             relativeToURL: jenkinsURL)
 
-        cellView.setJob(JenkinsJob(url: jobURL!))
+        cellView.setJob(JenkinsJob(url: jobURL!), name: jobs[row].0)
         return cellView
     }
 }

@@ -1,29 +1,64 @@
 import Foundation
 
 class JenkinsJob {
-    private var jobUrl: NSURL
+    private let jobURL: NSURL
     
-    private var fullStatus: NSDictionary?
+    private var currentStatus: NSDictionary?
+    private var completedStatus: NSDictionary?
+
     private var timestamp: NSTimeInterval?
     private var estimatedTime: NSTimeInterval?
+    private var building: Bool?
+    private var status: JobStatus?
     
     init(url: NSURL) {
-        jobUrl = NSURL(string: "lastBuild/api/json?pretty=false",
-            relativeToURL: url)!
+        jobURL = url
         refresh()
     }
     
     func refresh() {
         println("Loading...")
-        let rawData = NSData(contentsOfURL: jobUrl)
+        let rawData = NSData(contentsOfURL: NSURL(
+            string: "lastBuild/api/json?pretty=false",
+            relativeToURL: jobURL)!)
 
-        fullStatus =  NSJSONSerialization.JSONObjectWithData(
+        currentStatus =  NSJSONSerialization.JSONObjectWithData(
             rawData!,
             options: NSJSONReadingOptions.allZeros,
             error: nil) as? NSDictionary
         
-        timestamp = fullStatus!["timestamp"] as NSTimeInterval / 1000
-        estimatedTime = fullStatus!["estimatedDuration"] as NSTimeInterval / 1000
+        timestamp = currentStatus!["timestamp"] as NSTimeInterval / 1000
+        estimatedTime = currentStatus!["estimatedDuration"] as NSTimeInterval / 1000
+        building = currentStatus!["building"] as? Bool
+
+        var rawStatus: String?;
+        if building! {
+            println("Loading completed build...")
+            let rawData = NSData(contentsOfURL: NSURL(
+                string: "lastCompletedBuild/api/json?pretty=false",
+                relativeToURL: jobURL)!)
+
+            completedStatus =  NSJSONSerialization.JSONObjectWithData(
+                rawData!,
+                options: NSJSONReadingOptions.allZeros,
+                error: nil) as? NSDictionary
+            rawStatus = completedStatus!["result"] as? String
+        } else {
+            rawStatus = currentStatus!["result"] as? String
+        }
+
+        switch rawStatus {
+        case .Some("ABORTED"):
+            status = JobStatus.ABORTED
+        case .Some("FAILURE"):
+            status = JobStatus.FAILURE
+        case .Some("SUCCESS"):
+            status = JobStatus.SUCCESS
+        case .Some("UNSTABLE"):
+            status = JobStatus.UNSTABLE
+        default:
+            status = JobStatus.UNKNOWN
+        }
     }
 
     func estimatedProgress() -> Double {
@@ -36,23 +71,11 @@ class JenkinsJob {
     }
     
     func getStatus() -> JobStatus {
-        let status = fullStatus!["result"] as String
-        switch status {
-        case "ABORTED":
-            return JobStatus.ABORTED
-        case "FAILURE":
-            return JobStatus.FAILURE
-        case "SUCCESS":
-            return JobStatus.SUCCESS
-        case "UNSTABLE":
-            return JobStatus.UNSTABLE
-        default:
-            return JobStatus.UNKNOWN
-        }
+        return status!
     }
     
     func isBuilding() -> Bool {
-        return fullStatus!["building"] as Bool
+        return building!
     }
 }
 
