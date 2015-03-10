@@ -703,6 +703,30 @@
                                                                 <customView id="1sG-u6-8Cs" customClass="JobView" customModule="Jenky" customModuleProvider="target">
                                                                     <rect key="frame" x="0.0" y="0.0" width="450" height="100"/>
                                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                                    <subviews>
+                                                                        <customView ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="r0N-2y-YEC" customClass="RadialProgressBar" customModule="Jenky" customModuleProvider="target">
+                                                                            <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                                                                            <userDefinedRuntimeAttributes>
+                                                                                <userDefinedRuntimeAttribute type="number" keyPath="radius">
+                                                                                    <real key="value" value="25"/>
+                                                                                </userDefinedRuntimeAttribute>
+                                                                                <userDefinedRuntimeAttribute type="number" keyPath="width">
+                                                                                    <real key="value" value="10"/>
+                                                                                </userDefinedRuntimeAttribute>
+                                                                            </userDefinedRuntimeAttributes>
+                                                                        </customView>
+                                                                        <customView ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PpL-G4-aOi" customClass="JobStatusIndicator" customModule="Jenky" customModuleProvider="target">
+                                                                            <rect key="frame" x="35" y="35" width="30" height="30"/>
+                                                                        </customView>
+                                                                    </subviews>
+                                                                    <constraints>
+                                                                        <constraint firstItem="PpL-G4-aOi" firstAttribute="centerY" secondItem="r0N-2y-YEC" secondAttribute="centerY" id="k8M-c6-Q29"/>
+                                                                        <constraint firstItem="PpL-G4-aOi" firstAttribute="centerX" secondItem="r0N-2y-YEC" secondAttribute="centerX" id="mqZ-KD-b4j"/>
+                                                                    </constraints>
+                                                                    <connections>
+                                                                        <outlet property="progressBar" destination="r0N-2y-YEC" id="cjw-e8-4JS"/>
+                                                                        <outlet property="statusIndicator" destination="PpL-G4-aOi" id="FgK-Dm-9U3"/>
+                                                                    </connections>
                                                                 </customView>
                                                             </prototypeCellViews>
                                                         </tableColumn>

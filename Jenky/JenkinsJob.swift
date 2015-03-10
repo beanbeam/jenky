@@ -8,14 +8,15 @@ class JenkinsJob {
     private var estimatedTime: NSTimeInterval?
     
     init(url: NSURL) {
-        jobUrl = url
+        jobUrl = NSURL(string: "lastBuild/api/json?pretty=false",
+            relativeToURL: url)!
         refresh()
     }
     
     func refresh() {
         println("Loading...")
         let rawData = NSData(contentsOfURL: jobUrl)
-        
+
         fullStatus =  NSJSONSerialization.JSONObjectWithData(
             rawData!,
             options: NSJSONReadingOptions.allZeros,

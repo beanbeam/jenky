@@ -10,8 +10,11 @@ import Cocoa
 import Foundation
 
 class JobListDelegate: NSObject, NSTableViewDelegate, NSTableViewDataSource {
-    var jobs:[JenkinsJob] = [
-        JenkinsJob(url: NSURL(string: "http://some.jenkins.server/job/jobname/lastBuild/api/json?pretty=false")!)]
+    let jenkinsURL = NSURL(string: "http://some.jenkins.server")
+
+    let jobs:[(String, String)] = [
+        ("Job Name A", "jobPathA"),
+        ("Job Name B", "jobPathB")]
        
     func numberOfRowsInTableView(aTableView: NSTableView!) -> Int {
         return jobs.count
@@ -24,7 +27,11 @@ class JobListDelegate: NSObject, NSTableViewDelegate, NSTableViewDataSource {
         
         println("Getting view!")
 
-        cellView.setJob(jobs[row])
+        let jobURL = NSURL(
+            string: "job/" + jobs[row].1 + "/",
+            relativeToURL: jenkinsURL)
+
+        cellView.setJob(JenkinsJob(url: jobURL!))
         return cellView
     }
 }
