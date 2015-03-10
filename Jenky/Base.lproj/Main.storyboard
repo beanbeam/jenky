@@ -656,6 +656,7 @@
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="196" y="240" width="480" height="270"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
+                        <value key="minSize" type="size" width="80" height="80"/>
                     </window>
                     <connections>
                         <segue destination="XfG-lQ-9wD" kind="relationship" relationship="window.shadowedContentViewController" id="cq2-FE-JQM"/>
@@ -728,7 +729,7 @@
                                                                             </constraints>
                                                                         </customView>
                                                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="CsD-kr-rwY">
-                                                                            <rect key="frame" x="78" y="48" width="394" height="22"/>
+                                                                            <rect key="frame" x="78" y="51" width="394" height="19"/>
                                                                             <textFieldCell key="cell" lineBreakMode="truncatingTail" truncatesLastVisibleLine="YES" allowsUndo="NO" sendsActionOnEndEditing="YES" title="Job Name" usesSingleLineMode="YES" id="ogV-WW-Est">
                                                                                 <font key="font" metaFont="system" size="16"/>
                                                                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -738,7 +739,7 @@
                                                                     </subviews>
                                                                     <constraints>
                                                                         <constraint firstItem="PpL-G4-aOi" firstAttribute="centerY" secondItem="r0N-2y-YEC" secondAttribute="centerY" id="3cZ-B5-amn"/>
-                                                                        <constraint firstAttribute="trailing" secondItem="CsD-kr-rwY" secondAttribute="trailing" constant="10" id="4yt-OI-iA8"/>
+                                                                        <constraint firstAttribute="trailing" secondItem="CsD-kr-rwY" secondAttribute="trailing" priority="750" constant="10" id="4yt-OI-iA8"/>
                                                                         <constraint firstItem="CsD-kr-rwY" firstAttribute="top" secondItem="1sG-u6-8Cs" secondAttribute="top" constant="10" id="Bhl-L4-x0a"/>
                                                                         <constraint firstAttribute="bottom" secondItem="r0N-2y-YEC" secondAttribute="bottom" id="DkQ-dK-Ccr"/>
                                                                         <constraint firstItem="CsD-kr-rwY" firstAttribute="leading" secondItem="r0N-2y-YEC" secondAttribute="trailing" id="KGr-fo-bai"/>
