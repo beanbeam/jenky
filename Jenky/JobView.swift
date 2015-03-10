@@ -16,7 +16,6 @@ class JobView: NSTableCellView {
     private let RING_WIDTH: CGFloat = 10
 
     @IBOutlet var progressBar: RadialProgressBar!
-    @IBOutlet var statusIndicator: JobStatusIndicator!
     @IBOutlet var nameLabel: NSTextField!
 
     private var myJob: JenkinsJob?
@@ -38,12 +37,8 @@ class JobView: NSTableCellView {
     }
 
     func update() {
-        statusIndicator.setStatus(myJob!.getStatus())
-        if (myJob!.isBuilding()) {
-            progressBar.hidden = false
-            progressBar.setProgress(myJob!.estimatedProgress())
-        } else {
-            progressBar.hidden = true
-        }
+        progressBar.setState(myJob!.estimatedProgress(),
+            status: myJob!.getStatus(),
+            running: myJob!.isBuilding())
     }
 }
