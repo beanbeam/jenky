@@ -2,9 +2,6 @@ import Foundation
 
 class JenkinsJob {
     private let jobURL: NSURL
-    
-    private var currentStatus: NSDictionary?
-    private var completedStatus: NSDictionary?
 
     private var timestamp: NSTimeInterval?
     private var estimatedTime: NSTimeInterval?
@@ -13,16 +10,14 @@ class JenkinsJob {
     
     init(url: NSURL) {
         jobURL = url
-        refresh()
     }
     
     func refresh() {
-        println("Loading...")
         let rawData = NSData(contentsOfURL: NSURL(
             string: "lastBuild/api/json?pretty=false",
             relativeToURL: jobURL)!)
 
-        currentStatus =  NSJSONSerialization.JSONObjectWithData(
+        let currentStatus =  NSJSONSerialization.JSONObjectWithData(
             rawData!,
             options: NSJSONReadingOptions.allZeros,
             error: nil) as? NSDictionary
@@ -38,7 +33,7 @@ class JenkinsJob {
                 string: "lastCompletedBuild/api/json?pretty=false",
                 relativeToURL: jobURL)!)
 
-            completedStatus =  NSJSONSerialization.JSONObjectWithData(
+            let completedStatus =  NSJSONSerialization.JSONObjectWithData(
                 rawData!,
                 options: NSJSONReadingOptions.allZeros,
                 error: nil) as? NSDictionary

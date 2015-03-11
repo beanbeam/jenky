@@ -18,16 +18,26 @@ class RadialProgressBar: NSView {
     private let LAYERS = [
         NSColor(calibratedHue: 0,    saturation: 0,   brightness: 0.9, alpha: 1),
         NSColor(calibratedHue: 1/6,  saturation: 0.8, brightness: 0.8, alpha: 1),
-        NSColor(calibratedHue: 1/12, saturation: 0.8, brightness: 0.8, alpha: 1),
-        NSColor(calibratedHue: 0,    saturation: 0.8, brightness: 0.8, alpha: 1),
+        NSColor(calibratedHue: 1/12, saturation: 0.8, brightness: 0.7, alpha: 1),
+        NSColor(calibratedHue: 0,    saturation: 0.8, brightness: 0.7, alpha: 1),
         NSColor(calibratedHue: 0,    saturation: 1,   brightness: 1,   alpha: 1)]
-    
+
+    private let SUCCESS_COLOR = NSColor(
+        calibratedHue: 1/3, saturation: 0.8, brightness: 0.7, alpha: 1)
+    private let FAILURE_COLOR = NSColor(
+        calibratedHue: 0, saturation: 0.8, brightness: 0.7, alpha: 1)
+    private let ABORTED_COLOR = NSColor(
+        calibratedHue: 0, saturation: 0, brightness: 0.7, alpha: 1)
+    private let UNKNOWN_COLOR = NSColor(
+        calibratedHue: 5/6, saturation: 0.5, brightness: 0.7, alpha: 1)
+
     private var progress: Double = 0
     private var status: JobStatus = JobStatus.UNKNOWN
     private var running: Bool = false
 
     override func prepareForInterfaceBuilder() {
-        progress = 0.85
+        running = true
+        progress = 0.6
         status = JobStatus.SUCCESS
     }
     
@@ -60,6 +70,13 @@ class RadialProgressBar: NSView {
                 LAYERS[layer].set()
                 barPath.stroke()
             }
+
+            let dividerPath = NSBezierPath()
+            dividerPath.moveToPoint(center);
+            dividerPath.lineToPoint(CGPoint(
+                x: center.x, y: center.y + outerRadius))
+            NSColor.whiteColor().set()
+            dividerPath.stroke()
         }
 
         var radius: CGFloat
@@ -76,13 +93,13 @@ class RadialProgressBar: NSView {
 
         switch status {
         case .SUCCESS:
-            NSColor(calibratedHue: 1/3, saturation: 0.8, brightness: 0.7, alpha: 0.75).set()
+            SUCCESS_COLOR.set()
         case .FAILURE:
-            NSColor(calibratedHue: 0, saturation: 0.8, brightness: 0.7, alpha: 0.75).set()
+            FAILURE_COLOR.set()
         case .ABORTED:
-            NSColor(calibratedHue: 0, saturation: 0, brightness: 0.7, alpha: 0.75).set()
+            ABORTED_COLOR.set()
         default:
-            NSColor(calibratedHue: 5/6, saturation: 0.5, brightness: 0.7, alpha: 0.75).set()
+            UNKNOWN_COLOR.set()
         }
         statusPath.fill()
     }

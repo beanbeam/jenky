@@ -18,21 +18,26 @@ class JobView: NSTableCellView {
     @IBOutlet var progressBar: RadialProgressBar!
     @IBOutlet var nameLabel: NSTextField!
 
+    private var lastRefresh: NSDate?
+
     private var myJob: JenkinsJob?
 
     private var timer: NSTimer?;
 
-    override func mouseDown(event: NSEvent) {
-        myJob!.refresh()
-        update()
-    }
-
     func setJob(job: JenkinsJob, name: String) {
         myJob = job
         nameLabel.stringValue = name
+        refresh()
         let renderDelay = min(1.0, max(1/RENDER_FPS_CAP, job.getTime() * ANGLE_PER_FRAME / 360))
         println(NSString(format: "Updating at %.1ffps", 1/renderDelay))
-        timer = NSTimer.scheduledTimerWithTimeInterval(renderDelay, target: self, selector: "update", userInfo: nil, repeats: true)
+        timer = NSTimer.scheduledTimerWithTimeInterval(renderDelay, target: self, selector: "tick", userInfo: nil, repeats: true)
+    }
+
+    func refresh() {
+        println("Refreshing " + nameLabel.stringValue + "...")
+
+        myJob!.refresh()
+        lastRefresh = NSDate()
         update()
     }
 
@@ -40,5 +45,28 @@ class JobView: NSTableCellView {
         progressBar.setState(myJob!.estimatedProgress(),
             status: myJob!.getStatus(),
             running: myJob!.isBuilding())
+    }
+
+    func tick() {
+        let timeSinceRefresh = lastRefresh!.timeIntervalSinceNow * -1
+
+        if !myJob!.isBuilding() {
+            if timeSinceRefresh > 30 {
+                refresh()
+            } else {
+                update()
+            }
+        } else {
+            if timeSinceRefresh > 10 ||
+            (abs(myJob!.estimatedProgress() - 1) < 0.03 && timeSinceRefresh > 2) {
+                refresh()
+            } else {
+                update()
+            }
+        }
+    }
+
+    override func mouseDown(event: NSEvent) {
+        refresh()
     }
 }
