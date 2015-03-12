@@ -28,20 +28,25 @@ class JenkinsJob {
         building = currentStatus!["building"] as? Bool
         let number = currentStatus!["number"] as? Int
 
-        var rawStatus = currentStatus!["result"] as? String
-        if building! && number != jobNumber {
-            println("Loading completed build...")
-            let rawData = NSData(contentsOfURL: NSURL(
-                string: "lastCompletedBuild/api/json?pretty=false",
-                relativeToURL: jobURL)!)
+        var rawStatus: String?
+        if building! {
+            if number != jobNumber {
+                println("Loading completed build...")
+                let rawData = NSData(contentsOfURL: NSURL(
+                    string: "lastCompletedBuild/api/json?pretty=false",
+                    relativeToURL: jobURL)!)
 
-            let completedStatus =  NSJSONSerialization.JSONObjectWithData(
-                rawData!,
-                options: NSJSONReadingOptions.allZeros,
-                error: nil) as? NSDictionary
-            rawStatus = completedStatus!["result"] as? String
+                let completedStatus =  NSJSONSerialization.JSONObjectWithData(
+                    rawData!,
+                    options: NSJSONReadingOptions.allZeros,
+                    error: nil) as? NSDictionary
+                rawStatus = completedStatus!["result"] as? String
+            } else {
+                return // We want to keep the status the same
+            }
+        } else {
+            rawStatus = currentStatus!["result"] as? String
         }
-
         jobNumber = number
 
         switch rawStatus {
