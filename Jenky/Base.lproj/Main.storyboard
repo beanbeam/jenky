@@ -718,6 +718,9 @@
                                                                                 <userDefinedRuntimeAttribute type="number" keyPath="outerRadius">
                                                                                     <real key="value" value="30"/>
                                                                                 </userDefinedRuntimeAttribute>
+                                                                                <userDefinedRuntimeAttribute type="number" keyPath="statusOffset">
+                                                                                    <real key="value" value="5"/>
+                                                                                </userDefinedRuntimeAttribute>
                                                                             </userDefinedRuntimeAttributes>
                                                                         </customView>
                                                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="CsD-kr-rwY">
