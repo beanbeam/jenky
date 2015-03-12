@@ -7,6 +7,7 @@ class JenkinsJob {
     private var estimatedTime: NSTimeInterval?
     private var building: Bool?
     private var status: JobStatus?
+    private var jobNumber: Int?
     
     init(url: NSURL) {
         jobURL = url
@@ -25,9 +26,10 @@ class JenkinsJob {
         timestamp = currentStatus!["timestamp"] as NSTimeInterval / 1000
         estimatedTime = currentStatus!["estimatedDuration"] as NSTimeInterval / 1000
         building = currentStatus!["building"] as? Bool
+        let number = currentStatus!["number"] as? Int
 
-        var rawStatus: String?;
-        if building! {
+        var rawStatus = currentStatus!["result"] as? String
+        if building! && number != jobNumber {
             println("Loading completed build...")
             let rawData = NSData(contentsOfURL: NSURL(
                 string: "lastCompletedBuild/api/json?pretty=false",
@@ -38,9 +40,9 @@ class JenkinsJob {
                 options: NSJSONReadingOptions.allZeros,
                 error: nil) as? NSDictionary
             rawStatus = completedStatus!["result"] as? String
-        } else {
-            rawStatus = currentStatus!["result"] as? String
         }
+
+        jobNumber = number
 
         switch rawStatus {
         case .Some("ABORTED"):

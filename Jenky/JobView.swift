@@ -50,7 +50,8 @@ class JobView: NSTableCellView {
     func tick() {
         let timeSinceRefresh = lastRefresh!.timeIntervalSinceNow * -1
 
-        if !myJob!.isBuilding() {
+        if !myJob!.isBuilding() ||
+            myJob!.estimatedProgress() > 5 {
             if timeSinceRefresh > 30 {
                 refresh()
             } else {
