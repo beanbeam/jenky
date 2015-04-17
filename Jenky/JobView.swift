@@ -17,6 +17,7 @@ class JobView: NSTableCellView {
 
     @IBOutlet var progressBar: RadialProgressBar!
     @IBOutlet var nameLabel: NSTextField!
+    @IBOutlet var progressLabel: NSTextField!
 
     private var lastRefresh: NSDate?
 
@@ -28,7 +29,12 @@ class JobView: NSTableCellView {
         myJob = job
         nameLabel.stringValue = name
         refresh()
-        let renderDelay = min(1.0, max(1/RENDER_FPS_CAP, job.getTime() * ANGLE_PER_FRAME / 360))
+        var renderDelay: NSTimeInterval
+        if let time = job.getEstimatedTime() {
+            renderDelay = min(1.0, max(1/RENDER_FPS_CAP, time * ANGLE_PER_FRAME / 360))
+        } else {
+            renderDelay = 1/RENDER_FPS_CAP
+        }
         println(NSString(format: "Updating at %.1ffps", 1/renderDelay))
         timer = NSTimer.scheduledTimerWithTimeInterval(renderDelay, target: self, selector: "tick", userInfo: nil, repeats: true)
     }
@@ -41,16 +47,48 @@ class JobView: NSTableCellView {
         update()
     }
 
+    @IBAction
+    func openConsole(sender: AnyObject) {
+        NSWorkspace.sharedWorkspace().openURL(NSURL(
+            string: "lastBuild/console",
+            relativeToURL: myJob!.getUrl())!)
+    }
+
     func update() {
-        progressBar.setState(myJob!.estimatedProgress(),
-            status: myJob!.getStatus(),
-            running: myJob!.isBuilding())
+        if myJob!.getStatus() == JobStatus.LOADING {
+            progressBar.setState(0, status: JobStatus.LOADING, running: false)
+            progressLabel.stringValue = "Loading..."
+        } else {
+            if myJob!.isBuilding()! {
+                let remainingTime = myJob!.getEstimatedTime()! - myJob!.getRunTime()
+
+                let leftString = formatTimeInterval(myJob!.getRunTime())
+
+                let labelString = String(format: "%@ %@",
+                    formatTimeInterval(myJob!.getRunTime()).stringByPaddingToLength(11, withString: " ", startingAtIndex: 0),
+                    formatTimeInterval(-remainingTime, alwaysShowSign: true))
+
+                progressLabel.stringValue = labelString
+            } else {
+                progressLabel.stringValue = ""
+            }
+
+            progressBar.setState(myJob!.estimatedProgress(),
+                status: myJob!.getStatus(),
+                running: myJob!.isBuilding()!)
+        }
     }
 
     func tick() {
         let timeSinceRefresh = lastRefresh!.timeIntervalSinceNow * -1
 
-        if !myJob!.isBuilding() ||
+        if myJob!.getStatus() == JobStatus.LOADING {
+            if timeSinceRefresh > 10 {
+                refresh()
+            } else {
+                update()
+            }
+        } else if !myJob!.isBuilding()! ||
             myJob!.estimatedProgress() > 5 {
             if timeSinceRefresh > 30 {
                 refresh()
@@ -69,5 +107,37 @@ class JobView: NSTableCellView {
 
     override func mouseDown(event: NSEvent) {
         refresh()
+    }
+
+    func formatTimeInterval(interval: NSTimeInterval, alwaysShowSign: Bool = false) -> String {
+        let absInterval = abs(interval)
+
+        let sign: String
+        if absInterval < 1 {
+            return "0s"
+        } else if interval < 0 {
+            sign = "-"
+        } else if alwaysShowSign {
+            sign = "+"
+        } else {
+            sign = ""
+        }
+
+
+        if absInterval < 60 {
+            return String(format: "%@%ds", sign, Int(absInterval))
+        } else if absInterval < (60*10) {
+            return String(format: "%@%.1fm", sign, absInterval/60)
+        } else if absInterval < (60*60) {
+            return String(format: "%@%dm", sign, Int(absInterval/60))
+        } else if absInterval < (60*60*10) {
+            return String(format: "%@%.1fh", sign, absInterval/(60*60))
+        } else if absInterval < (60*60*24) {
+            return String(format: "%@%dh", sign, Int(absInterval/(60*60)))
+        }else if absInterval < (60*60*24*10) {
+            return String(format: "%@%.1fd", sign, absInterval/(60*60*24))
+        } else {
+            return String(format: "%@%dd", sign, Int(absInterval/(60*60*24)))
+        }
     }
 }

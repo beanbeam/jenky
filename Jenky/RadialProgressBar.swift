@@ -26,6 +26,8 @@ class RadialProgressBar: NSView {
         calibratedHue: 1/3, saturation: 0.8, brightness: 0.7, alpha: 1)
     private let FAILURE_COLOR = NSColor(
         calibratedHue: 0, saturation: 0.8, brightness: 0.7, alpha: 1)
+    private let UNSTABLE_COLOR = NSColor(
+        calibratedHue: 1/6, saturation: 0.8, brightness: 0.7, alpha: 1)
     private let ABORTED_COLOR = NSColor(
         calibratedHue: 0, saturation: 0, brightness: 0.7, alpha: 1)
     private let UNKNOWN_COLOR = NSColor(
@@ -45,6 +47,26 @@ class RadialProgressBar: NSView {
         super.drawRect(dirtyRect)
 
         let center = NSPoint(x: self.bounds.width/2, y: self.bounds.height/2)
+        if status == JobStatus.LOADING {
+            let dotRadius = (outerRadius - 10)/3
+
+            var leftRect = NSRect(
+                x: center.x - (outerRadius-5), y: center.y - dotRadius,
+                width: 2 * dotRadius, height: 2 * dotRadius)
+
+            let offset = 5+2*dotRadius
+
+            let loadingPath = NSBezierPath()
+            loadingPath.appendBezierPathWithOvalInRect(leftRect)
+            leftRect.offset(dx: offset, dy: 0)
+            loadingPath.appendBezierPathWithOvalInRect(leftRect)
+            leftRect.offset(dx: offset, dy: 0)
+            loadingPath.appendBezierPathWithOvalInRect(leftRect)
+            ABORTED_COLOR.set()
+            loadingPath.fill()
+            return
+        }
+
         if running {
             let radius = outerRadius - width/2
             let layer = min(Int(progress), LAYERS.count)
@@ -96,6 +118,8 @@ class RadialProgressBar: NSView {
             SUCCESS_COLOR.set()
         case .FAILURE:
             FAILURE_COLOR.set()
+        case .UNSTABLE:
+            UNSTABLE_COLOR.set()
         case .ABORTED:
             ABORTED_COLOR.set()
         default:
@@ -109,5 +133,9 @@ class RadialProgressBar: NSView {
         self.status = status
         self.running = running
         needsDisplay = true
+    }
+
+    override func mouseDown(event: NSEvent) {
+        
     }
 }

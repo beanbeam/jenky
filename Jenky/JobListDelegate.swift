@@ -16,14 +16,14 @@ class JobListDelegate: NSObject, NSTableViewDelegate, NSTableViewDataSource {
         ("Job Name A", "jobPathA"),
         ("Job Name B", "jobPathB")]
        
-    func numberOfRowsInTableView(aTableView: NSTableView!) -> Int {
+    func numberOfRowsInTableView(aTableView: NSTableView) -> Int {
         return jobs.count
     }
     
-    func tableView(tableView: NSTableView!, viewForTableColumn tableColumn: NSTableColumn!, row: Int) -> AnyObject! {
+    func tableView(tableView: NSTableView, viewForTableColumn tableColumn: NSTableColumn?, row: Int) -> NSView? {
         var cellView: JobView = tableView.makeViewWithIdentifier(
-            tableColumn.identifier,
-            owner: self) as JobView
+            tableColumn!.identifier,
+            owner: self) as! JobView
         
         println("Getting view!")
 
