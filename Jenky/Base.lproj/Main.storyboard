@@ -735,6 +735,9 @@
                                                                         </textField>
                                                                         <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="RV3-de-mw7">
                                                                             <rect key="frame" x="268" y="9" width="22" height="19"/>
+                                                                            <constraints>
+                                                                                <constraint firstAttribute="width" constant="22" id="JD8-iA-drg"/>
+                                                                            </constraints>
                                                                             <buttonCell key="cell" type="roundRect" title="&gt;" bezelStyle="roundedRect" alignment="center" borderStyle="border" inset="2" id="W7j-aI-kO7">
                                                                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                                                 <font key="font" metaFont="cellTitle"/>
@@ -776,13 +779,14 @@
                                                                         <constraint firstItem="CsD-kr-rwY" firstAttribute="leading" secondItem="r0N-2y-YEC" secondAttribute="trailing" id="KGr-fo-bai"/>
                                                                         <constraint firstItem="r0N-2y-YEC" firstAttribute="leading" secondItem="1sG-u6-8Cs" secondAttribute="leading" id="LzZ-vY-A2W"/>
                                                                         <constraint firstAttribute="trailing" secondItem="v99-VC-weh" secondAttribute="trailing" priority="750" constant="10" id="PuN-q6-wlI"/>
+                                                                        <constraint firstItem="RV3-de-mw7" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="r0N-2y-YEC" secondAttribute="trailing" id="QTC-lX-dMK"/>
                                                                         <constraint firstItem="r0N-2y-YEC" firstAttribute="top" secondItem="1sG-u6-8Cs" secondAttribute="top" id="RKH-UJ-7BY"/>
                                                                         <constraint firstAttribute="bottom" secondItem="RV3-de-mw7" secondAttribute="bottom" constant="10" id="SnG-D6-8jr"/>
                                                                         <constraint firstItem="v99-VC-weh" firstAttribute="top" secondItem="qiH-Su-fY2" secondAttribute="bottom" constant="1" id="Tzh-BQ-uOW"/>
                                                                         <constraint firstItem="v99-VC-weh" firstAttribute="leading" secondItem="r0N-2y-YEC" secondAttribute="trailing" id="fiV-cV-xoT"/>
                                                                         <constraint firstItem="vrA-UO-gKN" firstAttribute="leading" secondItem="r0N-2y-YEC" secondAttribute="trailing" id="gge-pY-6nG"/>
                                                                         <constraint firstAttribute="trailing" secondItem="qiH-Su-fY2" secondAttribute="trailing" priority="750" constant="10" id="if1-cp-7iV"/>
-                                                                        <constraint firstAttribute="trailing" secondItem="RV3-de-mw7" secondAttribute="trailing" constant="10" id="ncd-Z5-cLE"/>
+                                                                        <constraint firstAttribute="trailing" secondItem="RV3-de-mw7" secondAttribute="trailing" priority="750" constant="10" id="ncd-Z5-cLE"/>
                                                                         <constraint firstItem="qiH-Su-fY2" firstAttribute="leading" secondItem="r0N-2y-YEC" secondAttribute="trailing" id="vkz-PH-ncm"/>
                                                                     </constraints>
                                                                     <connections>
