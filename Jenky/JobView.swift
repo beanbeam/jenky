@@ -48,13 +48,6 @@ class JobView: NSTableCellView {
         update()
     }
 
-    @IBAction
-    func openConsole(sender: AnyObject) {
-        NSWorkspace.sharedWorkspace().openURL(NSURL(
-            string: "lastBuild/console",
-            relativeToURL: myJob!.getUrl())!)
-    }
-
     func update() {
         if myJob!.getStatus() == JobStatus.LOADING {
             progressBar.setState(0, status: JobStatus.LOADING, running: false)
@@ -108,6 +101,13 @@ class JobView: NSTableCellView {
         refresh()
     }
 
+    @IBAction
+    func openConsole(sender: AnyObject) {
+        NSWorkspace.sharedWorkspace().openURL(NSURL(
+            string: "lastBuild/console",
+            relativeToURL: myJob!.getUrl())!)
+    }
+
     func formatTimeInterval(interval: NSTimeInterval, alwaysShowSign: Bool = false) -> String {
         let absInterval = abs(interval)
 
@@ -122,21 +122,26 @@ class JobView: NSTableCellView {
             sign = ""
         }
 
-
         if absInterval < 60 {
             return String(format: "%@%ds", sign, Int(absInterval))
         } else if absInterval < (60*10) {
-            return String(format: "%@%.1fm", sign, absInterval/60)
+            return String(format: "%@%.1lfm", sign, truncate(absInterval/60, places: 1))
         } else if absInterval < (60*60) {
             return String(format: "%@%dm", sign, Int(absInterval/60))
         } else if absInterval < (60*60*10) {
-            return String(format: "%@%.1fh", sign, absInterval/(60*60))
+            return String(format: "%@%.1lfh", sign, truncate(absInterval/(60*60), places: 1))
         } else if absInterval < (60*60*24) {
             return String(format: "%@%dh", sign, Int(absInterval/(60*60)))
         }else if absInterval < (60*60*24*10) {
-            return String(format: "%@%.1fd", sign, absInterval/(60*60*24))
+            return String(format: "%@%.1lfd", sign, truncate(absInterval/(60*60*24), places: 1))
         } else {
             return String(format: "%@%dd", sign, Int(absInterval/(60*60*24)))
         }
+    }
+
+    func truncate(number: Double, places: Int = 0) -> Double {
+        let multiplier = pow(10, Double(places))
+
+        return trunc(number*multiplier)/multiplier
     }
 }
