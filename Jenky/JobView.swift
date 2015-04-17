@@ -17,7 +17,8 @@ class JobView: NSTableCellView {
 
     @IBOutlet var progressBar: RadialProgressBar!
     @IBOutlet var nameLabel: NSTextField!
-    @IBOutlet var progressLabel: NSTextField!
+    @IBOutlet var leftStatus: NSTextField!
+    @IBOutlet var rightStatus: NSTextField!
 
     private var lastRefresh: NSDate?
 
@@ -57,20 +58,18 @@ class JobView: NSTableCellView {
     func update() {
         if myJob!.getStatus() == JobStatus.LOADING {
             progressBar.setState(0, status: JobStatus.LOADING, running: false)
-            progressLabel.stringValue = "Loading..."
+            leftStatus.stringValue = "Loading..."
+            rightStatus.stringValue = ""
         } else {
             if myJob!.isBuilding()! {
                 let remainingTime = myJob!.getEstimatedTime()! - myJob!.getRunTime()
 
-                let leftString = formatTimeInterval(myJob!.getRunTime())
-
-                let labelString = String(format: "%@ %@",
-                    formatTimeInterval(myJob!.getRunTime()).stringByPaddingToLength(11, withString: " ", startingAtIndex: 0),
-                    formatTimeInterval(-remainingTime, alwaysShowSign: true))
-
-                progressLabel.stringValue = labelString
+                leftStatus.stringValue = formatTimeInterval(myJob!.getRunTime())
+                rightStatus.stringValue = formatTimeInterval(-remainingTime,
+                    alwaysShowSign: true)
             } else {
-                progressLabel.stringValue = ""
+                leftStatus.stringValue = ""
+                rightStatus.stringValue = ""
             }
 
             progressBar.setState(myJob!.estimatedProgress(),
