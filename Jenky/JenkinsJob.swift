@@ -5,6 +5,7 @@ class JenkinsJob {
 
     private var timestamp: NSTimeInterval?
     private var estimatedTime: NSTimeInterval?
+    private var finalDuration: NSTimeInterval?
     private var building: Bool?
     private var status = JobStatus.LOADING
     private var jobNumber: Int?
@@ -57,6 +58,7 @@ class JenkinsJob {
                 return // We want to keep the status the same
             }
         } else {
+            finalDuration = currentStatus!["duration"] as! NSTimeInterval / 1000
             rawStatus = currentStatus!["result"] as? String
         }
         jobNumber = number
@@ -89,6 +91,10 @@ class JenkinsJob {
 
     func getEstimatedTime() -> NSTimeInterval? {
         return estimatedTime
+    }
+
+    func getFinalDuration() -> NSTimeInterval? {
+        return finalDuration
     }
     
     func getStatus() -> JobStatus {

@@ -57,11 +57,12 @@ class JobView: NSTableCellView {
             if myJob!.isBuilding()! {
                 let remainingTime = myJob!.getEstimatedTime()! - myJob!.getRunTime()
 
-                leftStatus.stringValue = formatTimeInterval(myJob!.getRunTime())
-                rightStatus.stringValue = formatTimeInterval(-remainingTime,
+                leftStatus.stringValue = formatConciseTimeInterval(myJob!.getRunTime())
+                rightStatus.stringValue = formatConciseTimeInterval(-remainingTime,
                     alwaysShowSign: true)
             } else {
-                leftStatus.stringValue = ""
+                leftStatus.stringValue = formatVerboseTimeSince(
+                    myJob!.getRunTime() - myJob!.getFinalDuration()!)
                 rightStatus.stringValue = ""
             }
 
@@ -108,7 +109,7 @@ class JobView: NSTableCellView {
             relativeToURL: myJob!.getUrl())!)
     }
 
-    func formatTimeInterval(interval: NSTimeInterval, alwaysShowSign: Bool = false) -> String {
+    func formatConciseTimeInterval(interval: NSTimeInterval, alwaysShowSign: Bool = false) -> String {
         let absInterval = abs(interval)
 
         let sign: String
@@ -136,6 +137,30 @@ class JobView: NSTableCellView {
             return String(format: "%@%.1lfd", sign, truncate(absInterval/(60*60*24), places: 1))
         } else {
             return String(format: "%@%dd", sign, Int(absInterval/(60*60*24)))
+        }
+    }
+
+    func formatVerboseTimeSince(interval: NSTimeInterval) -> String {
+        if interval < 0 {
+            return ""
+        } else if interval < 1 {
+            return "just now"
+        } else if interval < 2 {
+            return "a second ago"
+        } else if interval < 60 {
+            return String(format: "%d seconds ago", Int(interval))
+        } else if interval < (60*2) {
+            return "a minute ago"
+        } else if interval < (60*60) {
+            return String(format: "%d minutes ago", Int(interval/60))
+        } else if interval < (60*60*2) {
+            return "an hour ago"
+        } else if interval < (60*60*24) {
+            return String(format: "%d hours ago", Int(interval/(60*60)))
+        } else if interval < (60*60*24*2) {
+            return "yesterday"
+        } else {
+            return String(format: "%d days ago", Int(interval/(60*60*24)))
         }
     }
 
