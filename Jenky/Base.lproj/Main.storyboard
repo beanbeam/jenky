@@ -725,14 +725,6 @@
                                                                                 </userDefinedRuntimeAttribute>
                                                                             </userDefinedRuntimeAttributes>
                                                                         </customView>
-                                                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="CsD-kr-rwY">
-                                                                            <rect key="frame" x="78" y="51" width="214" height="19"/>
-                                                                            <textFieldCell key="cell" lineBreakMode="truncatingTail" truncatesLastVisibleLine="YES" allowsUndo="NO" sendsActionOnEndEditing="YES" title="Job Name" usesSingleLineMode="YES" id="ogV-WW-Est">
-                                                                                <font key="font" metaFont="system" size="16"/>
-                                                                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                                                            </textFieldCell>
-                                                                        </textField>
                                                                         <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="RV3-de-mw7">
                                                                             <rect key="frame" x="268" y="9" width="22" height="19"/>
                                                                             <constraints>
@@ -747,7 +739,7 @@
                                                                             </connections>
                                                                         </button>
                                                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="v99-VC-weh">
-                                                                            <rect key="frame" x="78" y="34" width="214" height="14"/>
+                                                                            <rect key="frame" x="78" y="34" width="62" height="14"/>
                                                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" truncatesLastVisibleLine="YES" allowsUndo="NO" sendsActionOnEndEditing="YES" title="Left Status" usesSingleLineMode="YES" id="vQ4-wM-2Pu">
                                                                                 <font key="font" metaFont="smallSystem"/>
                                                                                 <color key="textColor" name="controlShadowColor" catalog="System" colorSpace="catalog"/>
@@ -761,37 +753,47 @@
                                                                             <font key="titleFont" metaFont="system"/>
                                                                         </box>
                                                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="vrA-UO-gKN">
-                                                                            <rect key="frame" x="118" y="34" width="174" height="14"/>
+                                                                            <rect key="frame" x="222" y="34" width="70" height="14"/>
                                                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" truncatesLastVisibleLine="YES" allowsUndo="NO" sendsActionOnEndEditing="YES" alignment="right" title="Right Status" usesSingleLineMode="YES" id="wli-BR-50L">
                                                                                 <font key="font" metaFont="smallSystem"/>
                                                                                 <color key="textColor" name="controlShadowColor" catalog="System" colorSpace="catalog"/>
                                                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                                             </textFieldCell>
                                                                         </textField>
+                                                                        <button translatesAutoresizingMaskIntoConstraints="NO" id="MyH-2G-fV1">
+                                                                            <rect key="frame" x="78" y="51" width="89" height="19"/>
+                                                                            <buttonCell key="cell" type="inline" title="Job Name" bezelStyle="inline" alignment="left" inset="2" id="nqW-Sb-COW">
+                                                                                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                                                <font key="font" metaFont="system" size="16"/>
+                                                                            </buttonCell>
+                                                                            <connections>
+                                                                                <action selector="openJobSummary:" target="1sG-u6-8Cs" id="wdH-d3-1KI"/>
+                                                                            </connections>
+                                                                        </button>
                                                                     </subviews>
                                                                     <constraints>
-                                                                        <constraint firstAttribute="trailing" secondItem="CsD-kr-rwY" secondAttribute="trailing" priority="750" constant="10" id="4yt-OI-iA8"/>
                                                                         <constraint firstItem="vrA-UO-gKN" firstAttribute="top" secondItem="qiH-Su-fY2" secondAttribute="bottom" constant="1" id="AxB-SC-27D"/>
-                                                                        <constraint firstItem="CsD-kr-rwY" firstAttribute="top" secondItem="1sG-u6-8Cs" secondAttribute="top" constant="10" id="Bhl-L4-x0a"/>
                                                                         <constraint firstAttribute="bottom" secondItem="r0N-2y-YEC" secondAttribute="bottom" id="DkQ-dK-Ccr"/>
                                                                         <constraint firstAttribute="trailing" secondItem="vrA-UO-gKN" secondAttribute="trailing" priority="750" constant="10" id="E3V-6G-zqf"/>
-                                                                        <constraint firstItem="qiH-Su-fY2" firstAttribute="top" secondItem="CsD-kr-rwY" secondAttribute="bottom" constant="1" id="GVT-JZ-be7"/>
-                                                                        <constraint firstItem="CsD-kr-rwY" firstAttribute="leading" secondItem="r0N-2y-YEC" secondAttribute="trailing" id="KGr-fo-bai"/>
                                                                         <constraint firstItem="r0N-2y-YEC" firstAttribute="leading" secondItem="1sG-u6-8Cs" secondAttribute="leading" id="LzZ-vY-A2W"/>
-                                                                        <constraint firstAttribute="trailing" secondItem="v99-VC-weh" secondAttribute="trailing" priority="750" constant="10" id="PuN-q6-wlI"/>
+                                                                        <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="v99-VC-weh" secondAttribute="trailing" priority="750" constant="10" id="PuN-q6-wlI"/>
                                                                         <constraint firstItem="RV3-de-mw7" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="r0N-2y-YEC" secondAttribute="trailing" id="QTC-lX-dMK"/>
                                                                         <constraint firstItem="r0N-2y-YEC" firstAttribute="top" secondItem="1sG-u6-8Cs" secondAttribute="top" id="RKH-UJ-7BY"/>
                                                                         <constraint firstAttribute="bottom" secondItem="RV3-de-mw7" secondAttribute="bottom" constant="10" id="SnG-D6-8jr"/>
                                                                         <constraint firstItem="v99-VC-weh" firstAttribute="top" secondItem="qiH-Su-fY2" secondAttribute="bottom" constant="1" id="Tzh-BQ-uOW"/>
+                                                                        <constraint firstItem="MyH-2G-fV1" firstAttribute="leading" secondItem="r0N-2y-YEC" secondAttribute="trailing" constant="-2" id="VJ0-Xh-xsw"/>
                                                                         <constraint firstItem="v99-VC-weh" firstAttribute="leading" secondItem="r0N-2y-YEC" secondAttribute="trailing" id="fiV-cV-xoT"/>
-                                                                        <constraint firstItem="vrA-UO-gKN" firstAttribute="leading" secondItem="r0N-2y-YEC" secondAttribute="trailing" constant="40" id="gge-pY-6nG"/>
+                                                                        <constraint firstItem="vrA-UO-gKN" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="r0N-2y-YEC" secondAttribute="trailing" constant="40" id="gge-pY-6nG"/>
                                                                         <constraint firstAttribute="trailing" secondItem="qiH-Su-fY2" secondAttribute="trailing" priority="750" constant="10" id="if1-cp-7iV"/>
+                                                                        <constraint firstItem="MyH-2G-fV1" firstAttribute="top" secondItem="1sG-u6-8Cs" secondAttribute="top" constant="10" id="kLq-A2-dzu"/>
                                                                         <constraint firstAttribute="trailing" secondItem="RV3-de-mw7" secondAttribute="trailing" priority="750" constant="10" id="ncd-Z5-cLE"/>
+                                                                        <constraint firstItem="qiH-Su-fY2" firstAttribute="top" secondItem="MyH-2G-fV1" secondAttribute="bottom" constant="1" id="tvf-KR-pvh"/>
+                                                                        <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="MyH-2G-fV1" secondAttribute="trailing" priority="750" constant="8" id="uvg-3F-jCR"/>
                                                                         <constraint firstItem="qiH-Su-fY2" firstAttribute="leading" secondItem="r0N-2y-YEC" secondAttribute="trailing" id="vkz-PH-ncm"/>
                                                                     </constraints>
                                                                     <connections>
                                                                         <outlet property="leftStatus" destination="v99-VC-weh" id="WtL-QM-7Jl"/>
-                                                                        <outlet property="nameLabel" destination="CsD-kr-rwY" id="Wyz-4o-Zud"/>
+                                                                        <outlet property="nameArea" destination="MyH-2G-fV1" id="bZq-92-poL"/>
                                                                         <outlet property="progressBar" destination="r0N-2y-YEC" id="cjw-e8-4JS"/>
                                                                         <outlet property="rightStatus" destination="vrA-UO-gKN" id="gy5-UA-aWI"/>
                                                                     </connections>

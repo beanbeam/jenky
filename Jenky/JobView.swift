@@ -8,6 +8,7 @@
 
 import Cocoa
 
+@IBDesignable
 class JobView: NSTableCellView {
 
     private let RENDER_FPS_CAP: Double = 30
@@ -16,7 +17,7 @@ class JobView: NSTableCellView {
     private let RING_WIDTH: CGFloat = 10
 
     @IBOutlet var progressBar: RadialProgressBar!
-    @IBOutlet var nameLabel: NSTextField!
+    @IBOutlet var nameArea: NSButton!
     @IBOutlet var leftStatus: NSTextField!
     @IBOutlet var rightStatus: NSTextField!
 
@@ -28,7 +29,7 @@ class JobView: NSTableCellView {
 
     func setJob(job: JenkinsJob, name: String) {
         myJob = job
-        nameLabel.stringValue = name
+        nameArea.title = name
         refresh()
         var renderDelay: NSTimeInterval
         if let time = job.getEstimatedTime() {
@@ -41,7 +42,7 @@ class JobView: NSTableCellView {
     }
 
     func refresh() {
-        println("Refreshing " + nameLabel.stringValue + "...")
+        println("Refreshing " + nameArea.title + "...")
 
         myJob!.refresh()
         lastRefresh = NSDate()
@@ -90,7 +91,7 @@ class JobView: NSTableCellView {
             }
         } else {
             if timeSinceRefresh > 10 ||
-            (abs(myJob!.estimatedProgress() - 1) < 0.03 && timeSinceRefresh > 2) {
+            (abs(myJob!.estimatedProgress() - 1) < 0.03 && timeSinceRefresh > 3) {
                 refresh()
             } else {
                 update()
@@ -109,6 +110,12 @@ class JobView: NSTableCellView {
             relativeToURL: myJob!.getUrl())!)
     }
 
+    @IBAction
+    func openJobSummary(sender: AnyObject) {
+        NSWorkspace.sharedWorkspace().openURL(myJob!.getUrl())
+    }
+
+    // TODO: make this round to either + or - infinity to improve behavior around zero
     func formatConciseTimeInterval(interval: NSTimeInterval, alwaysShowSign: Bool = false) -> String {
         let absInterval = abs(interval)
 
@@ -145,10 +152,8 @@ class JobView: NSTableCellView {
             return ""
         } else if interval < 1 {
             return "just now"
-        } else if interval < 2 {
-            return "a second ago"
         } else if interval < 60 {
-            return String(format: "%d seconds ago", Int(interval))
+            return "seconds ago"
         } else if interval < (60*2) {
             return "a minute ago"
         } else if interval < (60*60) {

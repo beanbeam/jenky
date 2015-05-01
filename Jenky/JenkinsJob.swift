@@ -29,7 +29,10 @@ class JenkinsJob {
             rawData!,
             options: NSJSONReadingOptions.allZeros,
             error: nil) as? NSDictionary
-        
+
+        let wasBuilding = building
+        let oldNumber = jobNumber
+
         timestamp = currentStatus!["timestamp"] as! NSTimeInterval / 1000
         estimatedTime = currentStatus!["estimatedDuration"] as! NSTimeInterval / 1000
         building = currentStatus!["building"] as? Bool
@@ -75,10 +78,20 @@ class JenkinsJob {
         default:
             status = JobStatus.UNKNOWN
         }
+
+        if wasBuilding != nil && wasBuilding! {
+            if (!building! || jobNumber != number) {
+                // TODO: Build finished, send a notification?
+            }
+        }
     }
 
     func getUrl() -> NSURL {
         return jobURL
+    }
+
+    func getLatestBuildNumber() -> Int? {
+        return jobNumber
     }
 
     func estimatedProgress() -> Double {
