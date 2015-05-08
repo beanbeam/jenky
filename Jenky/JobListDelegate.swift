@@ -25,8 +25,8 @@ class JobListDelegate: NSObject, NSTableViewDelegate, NSTableViewDataSource {
         println("Getting view!")
 
         let jobDic = getOrInitJobs()[row] as! NSDictionary
-        let jobId = jobDic.valueForKey("id") as! String
-        let jobName = jobDic.valueForKey("name") as! String
+        let jobId = jobDic.valueForKey("ID") as! String
+        let jobName = jobDic.valueForKey("Name") as! String
 
         let jobURL = NSURL(string: "job/" + jobId + "/",
             relativeToURL: getOrInitServer())
@@ -40,7 +40,7 @@ class JobListDelegate: NSObject, NSTableViewDelegate, NSTableViewDataSource {
             return existingJobs
         } else {
             let userJobs = NSUserDefaults.standardUserDefaults()
-                .arrayForKey("jobs")
+                .arrayForKey("JenkinsJobs")
 
             if userJobs != nil {
                 jobs = userJobs
@@ -56,7 +56,7 @@ class JobListDelegate: NSObject, NSTableViewDelegate, NSTableViewDataSource {
             return existingURL
         } else {
             let userURL = NSUserDefaults.standardUserDefaults()
-                .stringForKey("jenkinsServer")
+                .stringForKey("JenkinsServer")
 
             if userURL != nil {
                 jenkinsURL = NSURL(string: userURL!)
