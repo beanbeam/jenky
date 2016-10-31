@@ -8,7 +8,7 @@ What it looks like so far:
 
 Using it!
 ---------
-Clicking on a job name will open the job page in a browser, while the *>* button in the corner will link to the console output.
+Clicking on a job name will open the job page in a browser, while the **>** button in the corner will link to the console output.
 Clicking anywhere else besides the status circle will force refresh the job.
 
 Configuring jobs must be manually done in _cc.Jenky.plist_ for now.
